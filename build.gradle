@@ -1,20 +1,68 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'java'
+	id 'idea'
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id "org.dddjava.jig-gradle-plugin" version "2019.6.2"
 }
 
-apply plugin: 'io.spring.dependency-management'
+jigReports.dependsOn(clean, compileJava, processResources)
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+description 'chord'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+sourceSets {
+	main {
+		// mybatis SQL map XML ファイルを java 以下でも検知する
+		resources.srcDirs = ["src/main/java", "src/main/resources"]
+	}
+}
 
 repositories {
-	mavenCentral()
+	jcenter()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.5.RELEASE')
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+
+
+	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1")
+
+	compileOnly group:'org.projectlombok', name:'lombok', version:'1.16.20'
+	implementation group:'com.opencsv', name:'opencsv', version:'4.1'
+
+
+	runtimeOnly("com.h2database:h2") // h2db
+//    runtime('mysql:mysql-connector-java') // mysql
+//    runtime('org.postgresql:postgresql') // postgresql
+
+	// Basic認証用
+	compile('org.springframework.boot:spring-boot-starter-security')
+//    compile('org.springframework.security:spring-security-web')
+	testCompile('org.springframework.security:spring-security-test')
+
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		exclude(group: 'junit')
+	}
+
+	testImplementation platform("org.junit:junit-bom:5.3.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testImplementation("org.junit.jupiter:junit-jupiter-params")
+	testRuntimeClasspath("org.junit.platform:junit-platform-launcher")
+	testRuntimeClasspath("org.junit.jupiter:junit-jupiter-engine")
+}
+
+test {
+	useJUnitPlatform()
+}
+
+javadoc {
+	options.charSet = 'UTF-8'
+	options.encoding = 'UTF-8'
 }
