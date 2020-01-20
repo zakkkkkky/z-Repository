@@ -1,4 +1,4 @@
-package com.chord.study.domain.model.voicing.chord.tone;
+package com.chord.study.domain.model.chord.tone;
 
 public class ChordTones {
     Root root;

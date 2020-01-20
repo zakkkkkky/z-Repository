@@ -1,8 +1,8 @@
-package com.chord.study.domain.model.voicing.chord;
+package com.chord.study.domain.model.chord;
 
-import com.project.management.xsandbox.domain.model.voicing.chord.additional.AdditionalNotes;
-import com.project.management.xsandbox.domain.model.voicing.chord.tone.ChordTones;
-import com.project.management.xsandbox.domain.model.voicing.chord.tension.TensionNotes;
+import com.chord.study.domain.model.chord.additional.AdditionalNotes;
+import com.chord.study.domain.model.chord.tension.TensionNotes;
+import com.chord.study.domain.model.chord.tone.ChordTones;
 
 public class Chord {
     ChordTones chordTones;

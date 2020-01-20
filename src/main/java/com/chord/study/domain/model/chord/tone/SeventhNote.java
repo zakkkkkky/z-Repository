@@ -1,6 +1,6 @@
-package com.chord.study.domain.model.voicing.chord.tone;
+package com.chord.study.domain.model.chord.tone;
 
-import com.project.management.xsandbox.domain.type.Note;
+import com.chord.study.domain.type.Note;
 
 public class SeventhNote {
     Note note;

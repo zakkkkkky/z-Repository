@@ -1,4 +1,4 @@
-package com.chord.study.domain.model.voicing.player;
+package com.chord.study.domain.model.player;
 
 import java.util.List;
 
