@@ -51,30 +51,26 @@ public enum Note {
     ,As5("A#5", 82)
     ,B5("B5", 83)
     ,C6("C6", 84)
-    ,Cs6("C#6", 85)
-    ,D6("D6", 86)
-    ,Ds6("D#6", 87)
-    ,E6("E6", 88)
-    ,F6("F6", 89)
-    ,Fs6("F#6", 90)
-    ,G6("G6", 91)
-    ,Gs6("G#6", 92)
-    ,A6("A6", 93)
-    ,As6("A#6", 94)
-    ,B6("B6", 95)
-    ,C7("C7", 96)
     ;
 
     String value;
     int noteNumber;
+
+    public static final Note LOWEST_LIMIT = Note.C2;
+    public static final Note HIGHEST_LIMIT = Note.C6;
 
     Note(String value, int noteNumber) {
         this.value = value;
         this.noteNumber = noteNumber;
     }
 
-
     public boolean isExists() {
         return this != null;
+    }
+
+    public boolean isInRange(Note target) {
+        if (target.noteNumber < LOWEST_LIMIT.noteNumber) return false;
+        if (target.noteNumber > HIGHEST_LIMIT.noteNumber) return false;
+        return true;
     }
 }
