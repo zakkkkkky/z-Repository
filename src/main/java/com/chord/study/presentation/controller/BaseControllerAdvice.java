@@ -1,4 +1,4 @@
-package com.project.management.xsandbox.presentation.controller;
+package com.chord.study.presentation.controller;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;

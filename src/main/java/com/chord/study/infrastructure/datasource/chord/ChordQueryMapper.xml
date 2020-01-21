@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chord.study.infrastructure.datasource.chord.ChordQueryMapper">
+
+    <select id="list" resultType="com.chord.study.domain.model.chord.Chord">
+        SELECT
+            コードトーン.root AS "chordTones.root.note",
+            コードトーン.third AS "chordTones.third.note",
+            コードトーン.fifth AS "chordTones.fifth.note"
+        FROM コード.コードID
+            JOIN コード.コードトーン ON コードトーン.コードID = コードID.コードID
+    <!--        JOIN コード.テンションノート ON テンションノート.コードID = コードID.コードID-->
+    <!--        JOIN コード.付加音程 ON 付加音程.コードID = コードID.コードID-->
+    </select>
+
+</mapper>
+

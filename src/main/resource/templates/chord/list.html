@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments/layout :: head(~{::title})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<section class="section">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <p class="navbar-item">
+                <span class="tag is-large">Title</span>
+            </p>
+        </div>
+
+<!--        <div class="navbar-end">-->
+<!--            <a class="navbar-item" id="logout" href="#" th:replace="_fragments/logout :: nav-logout">ログアウト</a>-->
+<!--        </div>-->
+    </nav>
+
+<!--    <hr>-->
+
+<!--    <div class="container">-->
+<!--        <h2 class="title"><a th:href="@{/admin/account}">アカウントの一覧と登録</a></h2>-->
+<!--    </div>-->
+</section>
+
+<section class="section">
+
+    <div class="container">
+        <h1 class="title">
+            コード一覧
+        </h1>
+
+<!--        <article id="message" class="message is-info" th:replace="_fragments/layout :: message">処理完了メッセージ</article>-->
+
+<!--        <div>-->
+<!--            <a class="button is-link" th:href="@{/admin/shipper/register}">荷主を追加する</a>-->
+<!--        </div>-->
+
+
+        <table class="table is-striped is-hoverable" th:if="${shipperList}">
+            <tr>
+                <th>コード</th>
+                <th>Root</th>
+                <th>3rd</th>
+                <th>5th</th>
+            </tr>
+            <!--/*@thymesVar id="shipper" type="com.chemical.domain.model.shipper.Shipper"*/-->
+            <!--/*@thymesVar id="shipperList" type="com.chemical.domain.model.shipper.ShipperList"*/-->
+            <tr th:each="chord:${chordList}">
+                <td></td>
+                <td th:text="${chord.chordTones().root().note()}"></td>
+                <td th:text="${chord.chordTones().third().note()}"></td>
+                <td th:text="${chord.chordTones().fifth().note()}"></td>
+            </tr>
+
+        </table>
+    </div>
+</section>
+
+
+
+</body>
+</html>

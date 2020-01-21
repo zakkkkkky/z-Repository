@@ -8,4 +8,9 @@ public class SeventhNote {
     public boolean isExists() {
         return note.isExists();
     }
+
+    @Override
+    public String toString() {
+        return note.label();
+    }
 }

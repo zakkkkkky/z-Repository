@@ -9,11 +9,30 @@ public class Chord {
     TensionNotes tensionNotes;
     AdditionalNotes additionalNotes;
 
+    public Chord(ChordTones chordTones, TensionNotes tensionNotes, AdditionalNotes additionalNotes) {
+        this.chordTones = chordTones;
+        this.tensionNotes = tensionNotes;
+        this.additionalNotes = additionalNotes;
+    }
+
+    public ChordTones chordTones() {
+        return chordTones;
+    }
+
     public boolean isTriad() {
         return !chordTones.hasSeventh() && tensionNotes.isEmpty();
     }
 
     public boolean isSeventhChord() {
         return chordTones.hasSeventh() && tensionNotes.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return "chord{" +
+            "chordTones=" + chordTones +
+            ", tensionNotes=" + tensionNotes +
+            ", additionalNotes=" + additionalNotes +
+            '}';
     }
 }

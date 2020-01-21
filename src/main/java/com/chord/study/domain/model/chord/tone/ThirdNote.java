@@ -5,4 +5,8 @@ import com.chord.study.domain.type.Note;
 public class ThirdNote {
     Note note;
 
+    @Override
+    public String toString() {
+        return note.label();
+    }
 }

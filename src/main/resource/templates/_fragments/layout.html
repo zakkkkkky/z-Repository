@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}"/>
+
+    <title th:replace="${title}">(title)</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/remove-double-click.js"></script>
+</head>
+
+<body th:fragment="body(contents)">
+  <div class="columns">
+<!--    <div class="column is-2"></div>-->
+    <div class="column is-12" th:insert="${contents}"></div>
+<!--    <div class="column is-2"></div>-->
+  </div>
+</body>
+
+<header class="nav" th:fragment="header">
+  <div class="level-right">
+  <span class="nav-item">
+    <a href="#" id="logout">ログアウト</a>
+  </span>
+  </div>
+  <form id="logOutForm" th:action="@{/logout}" method="post">
+  </form>
+  <script>
+      document.getElementById('logout').addEventListener('click', () => {
+          document.getElementById('logOutForm').submit();
+      })
+  </script>
+</header>
+
+<article id="errorMessage" class="message is-danger" th:if="${errorMessage}" th:fragment="errorMessage">
+  <div class="message-header">
+    <p>エラー</p>
+    <button id="errorMessageDeleteButton" class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body" th:text="${errorMessage}">
+  </div>
+  <script>
+    const deleteButton = document.getElementById('errorMessageDeleteButton');
+    deleteButton.addEventListener('click', function () {
+      const element = document.getElementById('errorMessage');
+      element.parentNode.removeChild(element);
+    });
+  </script>
+</article>
+
+<article id="message" class="message is-info" th:if="${message}" th:fragment="message">
+  <div class="message-header">
+    <p>処理完了</p>
+    <button id="messageDeleteButton" class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body" th:text="${message}">
+  </div>
+  <script>
+    const deleteButton = document.getElementById('messageDeleteButton');
+    deleteButton.addEventListener('click', function () {
+      const element = document.getElementById('message');
+      element.parentNode.removeChild(element);
+    });
+  </script>
+</article>
+</html>

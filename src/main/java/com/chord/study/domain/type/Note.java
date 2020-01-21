@@ -53,14 +53,14 @@ public enum Note {
     ,C6("C6", 84)
     ;
 
-    String value;
+    String label;
     int noteNumber;
 
     public static final Note LOWEST_LIMIT = Note.C2;
     public static final Note HIGHEST_LIMIT = Note.C6;
 
-    Note(String value, int noteNumber) {
-        this.value = value;
+    Note(String label, int noteNumber) {
+        this.label = label;
         this.noteNumber = noteNumber;
     }
 
@@ -72,5 +72,9 @@ public enum Note {
         if (target.noteNumber < LOWEST_LIMIT.noteNumber) return false;
         if (target.noteNumber > HIGHEST_LIMIT.noteNumber) return false;
         return true;
+    }
+
+    public String label(){
+        return label;
     }
 }
