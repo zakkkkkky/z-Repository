@@ -1,8 +1,8 @@
 plugins {
 	id 'java'
 	id 'idea'
-	id 'org.springframework.boot' version '2.1.5.RELEASE'
-	id "org.dddjava.jig-gradle-plugin" version "2019.6.2"
+	id 'org.springframework.boot' version '2.2.0.RELEASE'
+	id "org.dddjava.jig-gradle-plugin" version "2019.12.2"
 }
 
 jigReports.dependsOn(clean, compileJava, processResources)
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-	implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE')
+	implementation platform('org.springframework.boot:spring-boot-dependencies:2.2.0.RELEASE')
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -32,31 +32,30 @@ dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 //	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
-	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1")
+	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0")
 
-	compileOnly group:'org.projectlombok', name:'lombok', version:'1.16.20'
-	implementation group:'com.opencsv', name:'opencsv', version:'4.1'
+//	compileOnly group:'org.projectlombok', name:'lombok', version:'1.16.20'
+//	implementation group:'com.opencsv', name:'opencsv', version:'4.1'
 
-
-	runtimeOnly("com.h2database:h2") // h2db
+	runtimeOnly("com.h2database:h2")
 //    runtime('mysql:mysql-connector-java') // mysql
 //    runtime('org.postgresql:postgresql') // postgresql
 
 	// Basic認証用
 //	compile('org.springframework.boot:spring-boot-starter-security')
 //    compile('org.springframework.security:spring-security-web')
-	testCompile('org.springframework.security:spring-security-test')
+//	testCompile('org.springframework.security:spring-security-test')
 
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group: 'junit')
 	}
 
-	testImplementation("org.junit:junit-bom:5.3.2")
-	testImplementation("org.junit.jupiter:junit-jupiter-api")
-	testImplementation("org.junit.jupiter:junit-jupiter-params")
-	testRuntimeClasspath("org.junit.platform:junit-platform-launcher")
-	testRuntimeClasspath("org.junit.jupiter:junit-jupiter-engine")
+//	testImplementation("org.junit:junit-bom:5.3.2")
+//	testImplementation("org.junit.jupiter:junit-jupiter-api")
+//	testImplementation("org.junit.jupiter:junit-jupiter-params")
+//	testRuntimeClasspath("org.junit.platform:junit-platform-launcher")
+//	testRuntimeClasspath("org.junit.jupiter:junit-jupiter-engine")
 }
 
 test {
