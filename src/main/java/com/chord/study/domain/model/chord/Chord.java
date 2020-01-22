@@ -9,6 +9,12 @@ public class Chord {
     TensionNotes tensionNotes;
     AdditionalNotes additionalNotes;
 
+    public Chord() {
+        this.chordTones = new ChordTones();
+        this.tensionNotes = new TensionNotes();
+        this.additionalNotes = new AdditionalNotes();
+    }
+
     public Chord(ChordTones chordTones, TensionNotes tensionNotes, AdditionalNotes additionalNotes) {
         this.chordTones = chordTones;
         this.tensionNotes = tensionNotes;

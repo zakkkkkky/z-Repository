@@ -6,6 +6,9 @@ public class ChordTones {
     FifthNote fifth;
     SeventhNote seventh;
 
+    public ChordTones() {
+    }
+
     public ChordTones(Root root, ThirdNote third, FifthNote fifth, SeventhNote seventh) {
         this.root = root;
         this.third = third;
